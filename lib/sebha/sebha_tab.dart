@@ -9,7 +9,6 @@ class SebhaTab extends StatefulWidget {
 }
 
 class _SebhaTabState extends State<SebhaTab> {
-  // قائمة الأذكار
   List<String> sebhaAzkar = [
     "سبحان الله",
     "الحمد لله",
@@ -74,12 +73,10 @@ class _SebhaTabState extends State<SebhaTab> {
           ),
 
           const SizedBox(height: 30),
-          // نص "عدد التسبيحات"
           Text("عدد التسبيحات", style: theme.textTheme.titleLarge?.copyWith(
             fontWeight: FontWeight.bold,
           )),
           const SizedBox(height: 20),
-          // عرض عدد التسبيحات
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
             decoration: BoxDecoration(
@@ -91,7 +88,6 @@ class _SebhaTabState extends State<SebhaTab> {
             ),
           ),
           const SizedBox(height: 20),
-          // عرض الذكر الحالي
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
             decoration: BoxDecoration(
