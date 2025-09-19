@@ -1,18 +1,179 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/new_theme.dart';
+import 'package:islami_app/quran/item_sura_name.dart';
 
 class QuranTab extends StatelessWidget {
-  const QuranTab({super.key});
-
+  QuranTab({super.key});
+  List<Map<String, dynamic>> quranSurahs = [
+    {"name_en": "Al-Fatihah", "name_ar": "الفاتحة", "verses": 7},
+    {"name_en": "Al-Baqarah", "name_ar": "البقرة", "verses": 286},
+    {"name_en": "Al-'Imran", "name_ar": "آل عمران", "verses": 200},
+    {"name_en": "An-Nisa'", "name_ar": "النساء", "verses": 176},
+    {"name_en": "Al-Ma'idah", "name_ar": "المائدة", "verses": 120},
+    {"name_en": "Al-An'am", "name_ar": "الأنعام", "verses": 165},
+    {"name_en": "Al-A'raf", "name_ar": "الأعراف", "verses": 206},
+    {"name_en": "Al-Anfal", "name_ar": "الأنفال", "verses": 75},
+    {"name_en": "At-Tawbah", "name_ar": "التوبة", "verses": 129},
+    {"name_en": "Yunus", "name_ar": "يونس", "verses": 109},
+    {"name_en": "Hud", "name_ar": "هود", "verses": 123},
+    {"name_en": "Yusuf", "name_ar": "يوسف", "verses": 111},
+    {"name_en": "Ar-Ra'd", "name_ar": "الرعد", "verses": 43},
+    {"name_en": "Ibrahim", "name_ar": "ابراهيم", "verses": 52},
+    {"name_en": "Al-Hijr", "name_ar": "الحجر", "verses": 99},
+    {"name_en": "An-Nahl", "name_ar": "النحل", "verses": 128},
+    {"name_en": "Al-Isra", "name_ar": "الإسراء", "verses": 111},
+    {"name_en": "Al-Kahf", "name_ar": "الكهف", "verses": 110},
+    {"name_en": "Maryam", "name_ar": "مريم", "verses": 98},
+    {"name_en": "Taha", "name_ar": "طه", "verses": 135},
+    {"name_en": "Al-Anbiya'", "name_ar": "الأنبياء", "verses": 112},
+    {"name_en": "Al-Hajj", "name_ar": "الحج", "verses": 78},
+    {"name_en": "Al-Mu'minun", "name_ar": "المؤمنون", "verses": 118},
+    {"name_en": "An-Nur", "name_ar": "النور", "verses": 64},
+    {"name_en": "Al-Furqan", "name_ar": "الفرقان", "verses": 77},
+    {"name_en": "Ash-Shu'ara'", "name_ar": "الشعراء", "verses": 227},
+    {"name_en": "An-Naml", "name_ar": "النمل", "verses": 93},
+    {"name_en": "Al-Qasas", "name_ar": "القصص", "verses": 88},
+    {"name_en": "Al-'Ankabut", "name_ar": "العنكبوت", "verses": 69},
+    {"name_en": "Ar-Rum", "name_ar": "الروم", "verses": 60},
+    {"name_en": "Luqman", "name_ar": "لقمان", "verses": 34},
+    {"name_en": "As-Sajdah", "name_ar": "السجدة", "verses": 30},
+    {"name_en": "Al-Ahzab", "name_ar": "الأحزاب", "verses": 73},
+    {"name_en": "Saba'", "name_ar": "سبأ", "verses": 54},
+    {"name_en": "Fatir", "name_ar": "فاطر", "verses": 45},
+    {"name_en": "Ya-Sin", "name_ar": "يس", "verses": 83},
+    {"name_en": "As-Saffat", "name_ar": "الصافات", "verses": 182},
+    {"name_en": "Sad", "name_ar": "ص", "verses": 88},
+    {"name_en": "Az-Zumar", "name_ar": "الزمر", "verses": 75},
+    {"name_en": "Ghafir", "name_ar": "غافر", "verses": 85},
+    {"name_en": "Fussilat", "name_ar": "فصلت", "verses": 54},
+    {"name_en": "Ash-Shura", "name_ar": "الشورى", "verses": 53},
+    {"name_en": "Az-Zukhruf", "name_ar": "الزخرف", "verses": 89},
+    {"name_en": "Ad-Dukhan", "name_ar": "الدخان", "verses": 59},
+    {"name_en": "Al-Jathiyah", "name_ar": "الجاثية", "verses": 40},
+    {"name_en": "Al-Ahqaf", "name_ar": "الأحقاف", "verses": 35},
+    {"name_en": "Muhammad", "name_ar": "محمد", "verses": 38},
+    {"name_en": "Al-Fath", "name_ar": "الفتح", "verses": 29},
+    {"name_en": "Al-Hujurat", "name_ar": "الحجرات", "verses": 18},
+    {"name_en": "Qaf", "name_ar": "ق", "verses": 45},
+    {"name_en": "Adh-Dhariyat", "name_ar": "الذاريات", "verses": 60},
+    {"name_en": "At-Tur", "name_ar": "الطور", "verses": 49},
+    {"name_en": "An-Najm", "name_ar": "النجم", "verses": 62},
+    {"name_en": "Al-Qamar", "name_ar": "القمر", "verses": 55},
+    {"name_en": "Ar-Rahman", "name_ar": "الرحمن", "verses": 78},
+    {"name_en": "Al-Waqi'ah", "name_ar": "الواقعة", "verses": 96},
+    {"name_en": "Al-Hadid", "name_ar": "الحديد", "verses": 29},
+    {"name_en": "Al-Mujadilah", "name_ar": "المجادلة", "verses": 22},
+    {"name_en": "Al-Hashr", "name_ar": "الحشر", "verses": 24},
+    {"name_en": "Al-Mumtahanah", "name_ar": "الممتحنة", "verses": 13},
+    {"name_en": "As-Saff", "name_ar": "الصف", "verses": 14},
+    {"name_en": "Al-Jumu'ah", "name_ar": "الجمعة", "verses": 11},
+    {"name_en": "Al-Munafiqun", "name_ar": "المنافقون", "verses": 11},
+    {"name_en": "At-Taghabun", "name_ar": "التغابن", "verses": 18},
+    {"name_en": "At-Talaq", "name_ar": "الطلاق", "verses": 12},
+    {"name_en": "At-Tahrim", "name_ar": "التحريم", "verses": 12},
+    {"name_en": "Al-Mulk", "name_ar": "الملك", "verses": 30},
+    {"name_en": "Al-Qalam", "name_ar": "القلم", "verses": 52},
+    {"name_en": "Al-Haqqah", "name_ar": "الحاقة", "verses": 52},
+    {"name_en": "Al-Ma'arij", "name_ar": "المعارج", "verses": 44},
+    {"name_en": "Nuh", "name_ar": "نوح", "verses": 28},
+    {"name_en": "Al-Jinn", "name_ar": "الجن", "verses": 28},
+    {"name_en": "Al-Muzzammil", "name_ar": "المزمل", "verses": 20},
+    {"name_en": "Al-Muddaththir", "name_ar": "المدثر", "verses": 56},
+    {"name_en": "Al-Qiyamah", "name_ar": "القيامة", "verses": 40},
+    {"name_en": "Al-Insan", "name_ar": "الإنسان", "verses": 31},
+    {"name_en": "Al-Mursalat", "name_ar": "المرسلات", "verses": 50},
+    {"name_en": "An-Naba'", "name_ar": "النبأ", "verses": 40},
+    {"name_en": "An-Nazi'at", "name_ar": "النازعات", "verses": 46},
+    {"name_en": "'Abasa", "name_ar": "عبس", "verses": 42},
+    {"name_en": "At-Takwir", "name_ar": "التكوير", "verses": 29},
+    {"name_en": "Al-Infitar", "name_ar": "الإنفطار", "verses": 19},
+    {"name_en": "Al-Mutaffifin", "name_ar": "المطففين", "verses": 36},
+    {"name_en": "Al-Inshiqaq", "name_ar": "الإنشقاق", "verses": 25},
+    {"name_en": "Al-Buruj", "name_ar": "البروج", "verses": 22},
+    {"name_en": "At-Tariq", "name_ar": "الطارق", "verses": 17},
+    {"name_en": "Al-A'la", "name_ar": "الأعلى", "verses": 19},
+    {"name_en": "Al-Ghashiyah", "name_ar": "الغاشية", "verses": 26},
+    {"name_en": "Al-Fajr", "name_ar": "الفجر", "verses": 30},
+    {"name_en": "Al-Balad", "name_ar": "البلد", "verses": 20},
+    {"name_en": "Ash-Shams", "name_ar": "الشمس", "verses": 15},
+    {"name_en": "Al-Layl", "name_ar": "الليل", "verses": 21},
+    {"name_en": "Ad-Duha", "name_ar": "الضحى", "verses": 11},
+    {"name_en": "Ash-Sharh", "name_ar": "الشرح", "verses": 8},
+    {"name_en": "At-Tin", "name_ar": "التين", "verses": 8},
+    {"name_en": "Al-'Alaq", "name_ar": "العلق", "verses": 19},
+    {"name_en": "Al-Qadr", "name_ar": "القدر", "verses": 5},
+    {"name_en": "Al-Bayyinah", "name_ar": "البينة", "verses": 8},
+    {"name_en": "Az-Zalzalah", "name_ar": "الزلزلة", "verses": 8},
+    {"name_en": "Al-'Adiyat", "name_ar": "العاديات", "verses": 11},
+    {"name_en": "Al-Qari'ah", "name_ar": "القارعة", "verses": 11},
+    {"name_en": "At-Takathur", "name_ar": "التكاثر", "verses": 8},
+    {"name_en": "Al-'Asr", "name_ar": "العصر", "verses": 3},
+    {"name_en": "Al-Humazah", "name_ar": "الهمزة", "verses": 9},
+    {"name_en": "Al-Fil", "name_ar": "الفيل", "verses": 5},
+    {"name_en": "Quraysh", "name_ar": "قريش", "verses": 4},
+    {"name_en": "Al-Ma'un", "name_ar": "الماعون", "verses": 7},
+    {"name_en": "Al-Kawthar", "name_ar": "الكوثر", "verses": 3},
+    {"name_en": "Al-Kafirun", "name_ar": "الكافرون", "verses": 6},
+    {"name_en": "An-Nasr", "name_ar": "النصر", "verses": 3},
+    {"name_en": "Al-Masad", "name_ar": "المسد", "verses": 5},
+    {"name_en": "Al-Ikhlas", "name_ar": "الإخلاص", "verses": 4},
+    {"name_en": "Al-Falaq", "name_ar": "الفلق", "verses": 5},
+    {"name_en": "An-Nas", "name_ar": "الناس", "verses": 6},
+  ];
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: Image.asset("assets/images/qur2an_screen_logo.png"),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Image.asset("assets/images/qur2an_screen_logo.png"),
+          ),
+          Divider(color: MyTheme.primaryLight, thickness: 2),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  "Name of surah",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ),
+              Container(
+                width: 3,
+                height: 40, // تقدر تخليه أكبر حسب الحاجة
+                color: const Color.fromARGB(255, 219, 130, 21),
+              ),
+              Expanded(
+                child: Text(
+                  "number of verses",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ),
+            ],
+          ),
+          Divider(color: MyTheme.primaryLight, thickness: 2),
+          Expanded(
+            child: ListView.separated(
+              shrinkWrap: true,
+              itemCount: quranSurahs.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: SuraItems(
+                    suraName:  quranSurahs[index]["name_en"],
+                    suraVerses: quranSurahs[index]["verses"],
+                    index: index + 1,
+                     )
+                );
+              },
+              separatorBuilder:
+                  (context, index) => const Divider(
+                    color: Color(0xFFBF9765),
+                    thickness: 1,
+                    height: 0,
+                  ),
             ),
-         
+          ),
         ],
       ),
     );

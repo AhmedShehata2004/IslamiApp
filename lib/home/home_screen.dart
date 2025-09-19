@@ -46,18 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
             title: Text('Islami', style: Theme.of(context).textTheme.bodyLarge),
           ),
           body: tabs[currentIndex],
-
-          
-        //   Center(
-        //     child: Column(
-        //       children: [
-        //         Image.asset("assets/images/qur2an_screen_logo.png"),
-        //         const SizedBox(height: 20),
-        //         Text('Welcome to the Home Screen!'),
-        //       ],
-        //     ),
-        //   ),
-
           bottomNavigationBar: Theme(
             data: Theme.of(context).copyWith(canvasColor: MyTheme.primaryLight),
             child: BottomNavigationBar(
