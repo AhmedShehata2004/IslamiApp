@@ -160,10 +160,10 @@ class QuranTab extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   child: SuraItems(
-                    suraName:  quranSurahs[index]["name_en"],
+                    suraName: quranSurahs[index]["name_en"],
                     suraVerses: quranSurahs[index]["verses"],
                     index: index + 1,
-                     )
+                  ),
                 );
               },
               separatorBuilder:

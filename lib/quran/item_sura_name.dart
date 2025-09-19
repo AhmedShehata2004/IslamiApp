@@ -20,11 +20,7 @@ class SuraItems extends StatelessWidget {
         Navigator.pushNamed(
           context,
           SuraDetailsScreen.routeName,
-          arguments: {
-            'sura_name': suraName,
-            'sura_index': index, // هنا انت بالفعل بتبعت الـ index بشكل صحيح
-            'sura_verses': suraVerses, // لو محتاج تبعت عدد الآيات كمان
-          },
+          arguments: {'sura_name': suraName, 'sura_index': index},
         );
       },
       child: Row(

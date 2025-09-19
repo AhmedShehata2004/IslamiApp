@@ -20,3 +20,4 @@ flutter:
   assets:
     - assets/images/
     - assets/quran_files/
+    - assets/ahadeth_file.txt

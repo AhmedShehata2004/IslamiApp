@@ -50,8 +50,6 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Text('Islami', style: Theme.of(context).textTheme.bodyLarge),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
           ),
           body: Container(
             width: double.infinity,
@@ -87,25 +85,26 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
 
                   /// ✅ عرض الآيات كل آية في سطر داخل ListView
                   Expanded(
-                    child: isLoading
-                        ? const Center(child: CircularProgressIndicator())
-                        : ListView.builder(
-                            itemCount: suraLines.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12.0, vertical: 6.0),
-                                child: Text(
-                                  suraLines[index],
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge
-                                      ?.copyWith(fontSize: 18, height: 2),
-                                ),
-                              );
-                            },
-                          ),
+                    child:
+                        isLoading
+                            ? const Center(child: CircularProgressIndicator())
+                            : ListView.builder(
+                              itemCount: suraLines.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12.0,
+                                    vertical: 6.0,
+                                  ),
+                                  child: Text(
+                                    suraLines[index],
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context).textTheme.bodyLarge
+                                        ?.copyWith(fontSize: 18, height: 2),
+                                  ),
+                                );
+                              },
+                            ),
                   ),
                 ],
               ),
