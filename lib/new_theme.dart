@@ -25,11 +25,12 @@ class MyTheme {
       bodyLarge: TextStyle(
         color: black,
         fontSize: 30,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w500,
       ),
       bodyMedium: TextStyle(
         color: black,
-        fontSize: 16,
+        fontSize: 25,
+
       ),
       bodySmall: TextStyle(
         color: black,
@@ -43,7 +44,7 @@ class MyTheme {
     unselectedItemColor: white,
     showUnselectedLabels: false,
     type: BottomNavigationBarType.fixed,
-    
+
    )
 
    ) ;
