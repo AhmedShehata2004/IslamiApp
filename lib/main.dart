@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/hadeth/hadeth_details.dart';
 import 'package:islami_app/home/home_screen.dart';
 import 'package:islami_app/new_theme.dart';
 import 'package:islami_app/quran/sura_details.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -24,6 +24,10 @@ class MyApp extends StatelessWidget {
 		HadethDetails.routeName: (context) => const HadethDetails(),		
 	  },
       // home: const HomeScreen(),
+
+      locale: const Locale("en",),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
     );
   }
 }

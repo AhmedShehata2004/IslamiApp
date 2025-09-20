@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/new_theme.dart';
 import 'package:islami_app/quran/item_sura_name.dart';
+
 
 class QuranTab extends StatelessWidget {
   QuranTab({super.key});
@@ -133,9 +135,12 @@ class QuranTab extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: Text(
-                  "Name of surah",
-                  style: Theme.of(context).textTheme.bodyMedium,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    AppLocalizations.of(context)!.sura_name,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                 ),
               ),
               Container(
@@ -144,9 +149,12 @@ class QuranTab extends StatelessWidget {
                 color: const Color.fromARGB(255, 219, 130, 21),
               ),
               Expanded(
-                child: Text(
-                  "number of verses",
-                  style: Theme.of(context).textTheme.bodyMedium,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    AppLocalizations.of(context)!.sura_verses,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                 ),
               ),
             ],

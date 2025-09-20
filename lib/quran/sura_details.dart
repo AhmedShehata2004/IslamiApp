@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/new_theme.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
@@ -49,7 +50,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title: Text('Islami', style: Theme.of(context).textTheme.bodyLarge),
+            title: Text(AppLocalizations.of(context)!.app_title, style: Theme.of(context).textTheme.bodyLarge),
           ),
           body: Container(
             width: double.infinity,

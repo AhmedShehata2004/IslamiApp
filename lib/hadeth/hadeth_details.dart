@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/hadeth/hadeth_tab.dart';
 import 'package:islami_app/new_theme.dart';
 
@@ -19,7 +20,7 @@ class HadethDetails extends StatelessWidget {
         ),
         Scaffold(
           appBar: AppBar(
-            title: Text('Islami', style: Theme.of(context).textTheme.bodyLarge),
+            title: Text(AppLocalizations.of(context)!.app_title , style: Theme.of(context).textTheme.bodyLarge),
           ),
           body: Container(
             width: double.infinity,
