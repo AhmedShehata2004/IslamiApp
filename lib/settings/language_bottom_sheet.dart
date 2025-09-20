@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-class LanguageBottomSheet extends StatelessWidget {
+import 'package:islami_app/providers/app_config_provider.dart';
+import 'package:provider/provider.dart';
+
+class LanguageBottomSheet extends StatefulWidget {
   const LanguageBottomSheet({super.key});
 
   @override
+  State<LanguageBottomSheet> createState() => _LanguageBottomSheetState();
+}
+
+class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
+  @override
   Widget build(BuildContext context) {
-    return  Container(
+    var provider = Provider.of<AppConfigProvider>(context);
+    return Container(
       margin: EdgeInsets.all(20.0),
       width: double.infinity,
       decoration: BoxDecoration(
@@ -16,27 +25,52 @@ class LanguageBottomSheet extends StatelessWidget {
         ),
       ),
       child: Column(
-       crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Text(AppLocalizations.of(context)!.english, style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).primaryColor,  
-                fontWeight: FontWeight.bold,
-              )),
-              Spacer(),
-              Icon(Icons.check, size: 35, color: Theme.of(context).primaryColor,), 
-            ],
+          InkWell(
+            onTap: () {
+              // Change app language to English
+              provider.changeLanguage("en");
+            },
+            child:  provider.appLanguage == "en"
+                ? getSelectedWidget(AppLocalizations.of(context)!.english)
+                : getUnselectedWidget(AppLocalizations.of(context)!.english,),
           ),
           SizedBox(height: 10),
-          Divider(
-            color: Theme.of(context).primaryColor,
-            thickness: 2,
+          Divider(color: Theme.of(context).primaryColor, thickness: 2),
+          InkWell(
+            onTap: () {
+              // Change app language to Arabic
+              provider.changeLanguage("ar");
+            },
+            child: provider.appLanguage == "ar"
+                ? getSelectedWidget(AppLocalizations.of(context)!.arabic)
+                : getUnselectedWidget(AppLocalizations.of(context)!.arabic),
           ),
-          Text(AppLocalizations.of(context)!.arabic, style: Theme.of(context).textTheme.bodyLarge),
-
         ],
       ),
+    );
+  }
+
+  Widget getSelectedWidget(String text) {
+    return Row(
+      children: [
+        Text(
+          text,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            color: Theme.of(context).primaryColor,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Spacer(),
+        Icon(Icons.check, size: 35, color: Theme.of(context).primaryColor),
+      ],
+    );
+  }
+  getUnselectedWidget(String text) {
+    return Text(
+      text,
+      style: Theme.of(context).textTheme.bodyLarge,
     );
   }
 }
