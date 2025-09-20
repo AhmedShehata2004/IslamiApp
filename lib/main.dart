@@ -6,11 +6,14 @@ import 'package:islami_app/new_theme.dart';
 import 'package:islami_app/providers/app_config_provider.dart';
 import 'package:islami_app/quran/sura_details.dart';
 import 'package:provider/provider.dart';
+
 void main() {
-  runApp(ChangeNotifierProvider(
-    create: (context) => AppConfigProvider(),
-    child: const MyApp()),
-    );
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => AppConfigProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,18 +25,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Islami App',
       debugShowCheckedModeBanner: false,
-      theme: MyTheme.lightMode,
       initialRoute: "/",
       routes: {
-		"/": (context) => HomeScreen(),
-	    SuraDetailsScreen.routeName: (context) => const SuraDetailsScreen(),
-		HadethDetails.routeName: (context) => const HadethDetails(),		
-	  },
-      // home: const HomeScreen(),
+        "/": (context) => HomeScreen(),
+        SuraDetailsScreen.routeName: (context) => const SuraDetailsScreen(),
+        HadethDetails.routeName: (context) => const HadethDetails(),
+      },
 
-      locale: Locale( provider.appLanguage,),
+      // home: const HomeScreen(),
+      locale: Locale(provider.appLanguage),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+
+      themeMode: provider.appTheme,
+      darkTheme: MyTheme.darkMode,
+      theme: MyTheme.lightMode,
     );
   }
 }

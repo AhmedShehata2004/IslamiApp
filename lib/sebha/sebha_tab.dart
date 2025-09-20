@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/new_theme.dart';
-
+import 'package:islami_app/providers/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -48,7 +49,8 @@ class _SebhaTabState extends State<SebhaTab> {
   Widget build(BuildContext context) {
     // استخدم ThemeData لضمان توافق الألوان مع المظهر
     var theme = Theme.of(context);
-    
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -57,8 +59,7 @@ class _SebhaTabState extends State<SebhaTab> {
           Stack(
             alignment: Alignment.topCenter,
             children: [
-              Image.asset("assets/images/head_sebha_logo.png",
-              ),
+              Image.asset("assets/images/head_sebha_logo.png"),
               // جسم المسبحة مع خاصية الدوران عند الضغط
               GestureDetector(
                 onTap: onTasbehPress,
@@ -66,8 +67,7 @@ class _SebhaTabState extends State<SebhaTab> {
                   padding: const EdgeInsets.only(top: 80),
                   child: Transform.rotate(
                     angle: rotationAngle,
-                    child: Image.asset("assets/images/body_sebha_logo.png",
-                    ),
+                    child: Image.asset("assets/images/body_sebha_logo.png"),
                   ),
                 ),
               ),
@@ -75,17 +75,31 @@ class _SebhaTabState extends State<SebhaTab> {
           ),
 
           const SizedBox(height: 30),
-          Text(AppLocalizations.of(context)!.number_of_tasbeeh, style: theme.textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-          )),
+          Text(
+            AppLocalizations.of(context)!.number_of_tasbeeh,
+            style: provider.isDarkMode()
+                ? theme.textTheme.titleLarge?.copyWith(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: MyTheme.white,
+                  )
+                :
+            theme.textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const SizedBox(height: 20),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: MyTheme.primaryLight,
+              color:
+                  provider.isDarkMode()
+                      ? MyTheme.yellowColor
+                      : MyTheme.primaryLight,
             ),
-            child: Text("$counter",
+            child: Text(
+              "$counter",
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
@@ -94,19 +108,22 @@ class _SebhaTabState extends State<SebhaTab> {
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              color:MyTheme.primaryLight,
+              color:  provider.isDarkMode()
+                      ? MyTheme.yellowColor
+                      : MyTheme.primaryLight,
             ),
             child: Text(
               sebhaAzkar[azkarIndex],
               style: TextStyle(
                 fontSize: 30,
-                color: Colors.white,
+                color:  provider.isDarkMode()
+                      ? MyTheme.black
+                      : MyTheme.white,
                 fontWeight: FontWeight.bold,
-              )
-              
               ),
             ),
-          
+          ),
+
           const SizedBox(height: 20),
         ],
       ),

@@ -4,51 +4,54 @@ import 'package:islami_app/new_theme.dart';
 import 'package:islami_app/providers/app_config_provider.dart';
 import 'package:provider/provider.dart';
 
-class LanguageBottomSheet extends StatefulWidget {
-  const LanguageBottomSheet({super.key});
+class ThemeBottomSheet extends StatefulWidget {
+  const ThemeBottomSheet({super.key});
 
   @override
-  State<LanguageBottomSheet> createState() => _LanguageBottomSheetState();
+  State<ThemeBottomSheet> createState() => _ThemeBottomSheetState();
 }
 
-class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
+class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
+
     return Container(
-      margin: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       width: double.infinity,
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
       ),
       child: Column(
-                mainAxisSize: MainAxisSize.min, // مهم
-
+        mainAxisSize: MainAxisSize.min, // مهم
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InkWell(
             onTap: () {
-              // Change app language to English
-              provider.changeLanguage("en");
+              provider.changeTheme(ThemeMode.light);
+              Navigator.pop(context); // يقفل البوتوم شيت بعد الاختيار
             },
-            child:  provider.appLanguage == "en"
-                ? getSelectedWidget(AppLocalizations.of(context)!.english)
-                : getUnselectedWidget(AppLocalizations.of(context)!.english,),
+            child: provider.appTheme == ThemeMode.light
+                ? getSelectedWidget(AppLocalizations.of(context)!.light_mode)
+                : getUnselectedWidget(AppLocalizations.of(context)!.light_mode),
           ),
-          SizedBox(height: 10),
-          Divider(color: Theme.of(context).primaryColor, thickness: 2),
+          const SizedBox(height: 10),
+          Divider(
+            color: Theme.of(context).primaryColor,
+            thickness: 1.5,
+          ),
           InkWell(
             onTap: () {
-              // Change app language to Arabic
-              provider.changeLanguage("ar");
+              provider.changeTheme(ThemeMode.dark);
+              Navigator.pop(context); // يقفل البوتوم شيت بعد الاختيار
             },
-            child: provider.appLanguage == "ar"
-                ? getSelectedWidget(AppLocalizations.of(context)!.arabic)
-                : getUnselectedWidget(AppLocalizations.of(context)!.arabic),
+            child: provider.isDarkMode()
+                ? getSelectedWidget(AppLocalizations.of(context)!.dark_mode)
+                : getUnselectedWidget(AppLocalizations.of(context)!.dark_mode),
           ),
         ],
       ),
@@ -56,12 +59,12 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   }
 
   Widget getSelectedWidget(String text) {
-    var provider = Provider.of<AppConfigProvider>(context);
+      var provider = Provider.of<AppConfigProvider>(context);
     return Row(
       children: [
         Text(
           text,
-          style: provider.isDarkMode()
+          style:  provider.isDarkMode()
               ? Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: MyTheme.yellowColor,
                   fontWeight: FontWeight.bold,
@@ -70,14 +73,16 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
                 ),
+
         ),
-        Spacer(),
-        Icon(Icons.check, size: 35, color: MyTheme.yellowColor,),
+        const Spacer(),
+        Icon(Icons.check, size: 28, color: MyTheme.yellowColor),
       ],
     );
   }
-  getUnselectedWidget(String text) {
-      var provider = Provider.of<AppConfigProvider>(context);
+
+  Widget getUnselectedWidget(String text) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return Text(
       text,
       style: provider.isDarkMode()

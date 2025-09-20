@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/new_theme.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
 import 'package:islami_app/quran/sura_details.dart';
+import 'package:provider/provider.dart';
 
 class SuraItems extends StatelessWidget {
   final String suraName;
@@ -15,6 +18,7 @@ class SuraItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
@@ -35,7 +39,9 @@ class SuraItems extends StatelessWidget {
           Container(
             width: 1,
             height: 40,
-            color: const Color.fromARGB(255, 219, 130, 21),
+            color:  provider.isDarkMode()
+                        ? MyTheme.yellowColor
+                        : MyTheme.primaryLight,
           ),
           Expanded(
             child: Text(

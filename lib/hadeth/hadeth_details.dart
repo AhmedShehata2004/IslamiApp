@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/hadeth/hadeth_tab.dart';
 import 'package:islami_app/new_theme.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadethDetails extends StatelessWidget {
   const HadethDetails({super.key});
@@ -10,8 +12,17 @@ class HadethDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var arg = ModalRoute.of(context)!.settings.arguments as Hadeth;
+    var provider = Provider.of<AppConfigProvider>(context);
     return Stack(
       children: [
+        provider.isDarkMode()
+            ? Image.asset(
+                "assets/images/dark_bg.png",
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+              )
+            :
         Image.asset(
           "assets/images/default_bg.png",
           fit: BoxFit.cover,
@@ -32,14 +43,24 @@ class HadethDetails extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                
+                color: provider.isDarkMode()
+                    ? MyTheme.primaryDark
+                    :
+                 Colors.white,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
                 children: [
                   Text(arg.title, style: Theme.of(context).textTheme.bodyLarge),
 
-                  Divider(color: MyTheme.primaryLight, thickness: 2),
+                  Divider(
+                    
+                    color:provider.isDarkMode()
+                        ? MyTheme.yellowColor
+                        :
+                     MyTheme.primaryLight,
+                     thickness: 2,),
 
                   const SizedBox(height: 8),
 
