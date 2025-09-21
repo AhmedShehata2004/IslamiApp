@@ -1,0 +1,19 @@
+{
+    "app_title":"Islami",
+    "sura_name":"Name of Surah",
+    "sura_verses":"Number of Verses",
+    "hadeth_name":"Ahadeth Names",
+    "quran":"Quran",
+    "radio":"Radio",
+    "ezaat_alquran_alkarem":"Ezaat Alquran Alkarem",
+    "sebha":"Sebha",
+    "number_of_tasbeeh":"Number of Tasbeeh",
+    "settings":"Settings",
+    "language":"Language",
+    "english":"English",
+    "arabic":"Arabic",
+    "theme":"App Theme",
+    "dark_mode":"Dark Mode",
+    "light_mode":"Light Mode",
+    "hadeth":"Hadeth"
+}
